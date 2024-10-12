@@ -14,7 +14,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,6 +31,7 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @ToString
+@Inheritance(strategy = InheritanceType.JOINED)
 @JsonIgnoreProperties({"hibernateLazyInitialiser","handler"})
 public class User extends BaseEntity {
 	@Column(nullable = false)
@@ -48,5 +52,7 @@ public class User extends BaseEntity {
 	private List<Compte> comptes;
 	@ManyToMany(fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST,CascadeType.MERGE})
 	private List<Agence> agences;
+	@ManyToOne(fetch = FetchType.EAGER)
+	private Employee responsable;
 
 }

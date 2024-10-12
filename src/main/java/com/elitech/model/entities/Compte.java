@@ -34,5 +34,7 @@ private double solde;
 private User user;
 @OneToMany(mappedBy = "compte")
 private List<Operation> operations;
+@ManyToOne(optional = false)
+private Agence agence;
 
 }
