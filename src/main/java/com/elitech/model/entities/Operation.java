@@ -8,6 +8,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,4 +27,6 @@ private double montant;
 	@Column(nullable = false)
 	@Enumerated(EnumType.STRING)
 private TypeOperation types;
+	@ManyToOne(optional = true)
+	private Compte compte;
 }
