@@ -39,6 +39,8 @@ public class UserDTO {
 	@Pattern(regexp = "^[0-9+ -]")
 	@NotBlank
 	private String telephone;
+	private String genre;
+	private String grade;
 	@JsonIgnoreProperties("comptes")
 	private List<CompteDTO> comptes;
 @JsonIgnoreProperties("employees")
