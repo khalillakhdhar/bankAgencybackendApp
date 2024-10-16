@@ -1,15 +1,24 @@
 package com.elitech.model.dto;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 @Getter
 @Setter
 @ToString
+@NoArgsConstructor
+@AllArgsConstructor
+
 public class UserDTO {
 	@NotBlank(message = "le nom est obligatoire")
 	@Pattern(regexp = "^[A-Za-z éçè]+$",message = "veuillez saisir un nom valide")
@@ -30,5 +39,11 @@ public class UserDTO {
 	@Pattern(regexp = "^[0-9+ -]")
 	@NotBlank
 	private String telephone;
+	@JsonIgnoreProperties("comptes")
+	private List<CompteDTO> comptes;
+@JsonIgnoreProperties("employees")
+	private List<AgenceDTO> agences;
+@JsonIgnoreProperties("clients")
+	private EmployeeDTO responsable;
 
 }
